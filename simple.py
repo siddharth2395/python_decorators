@@ -1,16 +1,11 @@
-def smart_divide(func):
-   def inner(a,b):
-      print("I am going to divide",a,"and",b)
-      if b == 0:
-         # print("Whoops! cannot divide")
-         return "Whoops! cannot divide"
+def make_pretty(func):
+    def inner():
+        print("I got decorated")
+        func()
+    return inner
 
-      return func(a,b)
-   return inner
+@make_pretty
+def ordinary():
+    print("I am ordinary")
 
-@smart_divide
-def divide(a,b):
-    return a/b
-
-print divide(2,3)
-print divide(2,0)
+ordinary()
